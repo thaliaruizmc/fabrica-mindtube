@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fábrica MINDTUBE · By Thalia Ruiz</title>
+<meta name="description" content="Haz vídeos animados 2D, shorts de mapas y mejora tus vídeos con Claude, desde un panel en tu navegador. Descarga para la comunidad.">
+<style>
+:root{--azul:#0B1B3F;--azul2:#13295C;--oro:#FFC933;--oro2:#E8AE0F;--crema:#FFF8E6;--texto:#EAF0FF;--tenue:#9FB0D6;--linea:rgba(255,255,255,.12);--ok:#4CC38A;--mal:#FF7A7A}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--azul);color:var(--texto);line-height:1.55}
+a{color:var(--oro)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:rgba(11,27,63,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font-weight:800;letter-spacing:.3px;font-size:18px}.logo b{color:var(--oro)}
+nav{display:flex;gap:18px;align-items:center;font-size:14px}nav a{color:var(--tenue);text-decoration:none}nav a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:13px 22px;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;background:var(--oro);color:#1b1500;transition:.15s}
+.btn:hover{background:var(--oro2);transform:translateY(-1px)}
+.btn.sec{background:transparent;color:#fff;border:1px solid var(--linea)}.btn.sec:hover{background:rgba(255,255,255,.07)}
+.btn.chico{padding:8px 14px;font-size:14px}
+.btn:disabled{opacity:.6;cursor:wait}
+.hero{padding:70px 0 50px;text-align:center;background:radial-gradient(900px 400px at 50% -10%,rgba(255,201,51,.16),transparent 70%)}
+.pill{display:inline-block;border:1px solid rgba(255,201,51,.4);color:var(--oro);padding:6px 14px;border-radius:99px;font-size:13px;margin-bottom:22px}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.08;margin:0 0 18px;font-weight:800}h1 em{font-style:normal;color:var(--oro)}
+.sub{max-width:660px;margin:0 auto 28px;color:var(--tenue);font-size:19px}
+.acciones{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.nota{color:var(--tenue);font-size:13px;margin-top:14px}
+section{padding:60px 0}
+h2{font-size:clamp(26px,4vw,36px);margin:0 0 8px;text-align:center}
+.lead{text-align:center;color:var(--tenue);max-width:640px;margin:0 auto 34px}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.tarjeta{background:var(--azul2);border:1px solid var(--linea);border-radius:16px;padding:22px}
+.tarjeta h3{margin:0 0 6px;font-size:18px}.tarjeta p{margin:0;color:var(--tenue);font-size:15px}
+.tarjeta .ic{font-size:26px;margin-bottom:10px}
+.galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.galeria figure{margin:0;background:var(--azul2);border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+.galeria img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.galeria.v img{aspect-ratio:9/16}
+.galeria figcaption{padding:8px 10px;font-size:13px;color:var(--tenue)}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto}
+.par figure{margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--linea)}
+.par img{display:block;width:100%}
+.par span{position:absolute;left:10px;top:10px;background:var(--oro);color:#1b1500;font-weight:800;font-size:12px;padding:4px 10px;border-radius:99px}
+.par span.a{background:#fff}
+.pasos{counter-reset:p;list-style:none;padding:0;margin:0 auto;max-width:760px;display:grid;gap:12px}
+.pasos li{counter-increment:p;background:var(--azul2);border:1px solid var(--linea);border-radius:14px;padding:16px 18px 16px 62px;position:relative}
+.pasos li::before{content:counter(p);position:absolute;left:16px;top:14px;width:34px;height:34px;border-radius:50%;background:var(--oro);color:#1b1500;font-weight:800;display:grid;place-items:center}
+.pasos li b{display:block}.pasos li span{color:var(--tenue);font-size:14px}
+.pasos img{display:block;max-width:100%;border-radius:10px;border:1px solid var(--linea);margin-top:10px}
+pre{background:#071029;border:1px solid var(--linea);border-radius:12px;padding:14px;white-space:pre-wrap;word-break:break-word;font-size:14px;margin:10px 0 0;color:#dfe8ff}
+.caja{max-width:560px;margin:0 auto;background:var(--azul2);border:1px solid rgba(255,201,51,.35);border-radius:20px;padding:30px;text-align:center}
+.caja h3{margin:0 0 6px;font-size:22px}.caja p{color:var(--tenue);margin:0 0 18px}
+.msg{margin-top:14px;font-size:14px;padding:10px 14px;border-radius:10px;background:rgba(255,122,122,.12);color:#ffb3b3;border:1px solid rgba(255,122,122,.3)}
+.ok{background:rgba(76,195,138,.12);color:#9be8c3;border-color:rgba(76,195,138,.3)}
+.quien{font-size:13px;color:var(--tenue)}.quien button{margin-left:8px}
+.g{width:20px;height:20px;background:#fff;border-radius:50%;display:inline-grid;place-items:center;font-weight:800;color:#4285F4;font-size:13px}
+details{background:var(--azul2);border:1px solid var(--linea);border-radius:12px;padding:14px 18px;margin:0 auto 10px;max-width:760px}
+summary{cursor:pointer;font-weight:700}details p{color:var(--tenue);margin:10px 0 0}
+footer{border-top:1px solid var(--linea);padding:30px 0;text-align:center;color:var(--tenue);font-size:14px}
+[hidden]{display:none!important}
+@media(max-width:640px){nav a.h{display:none}.par{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="logo">Fábrica <b>MINDTUBE</b></div>
+  <nav>
+    <a class="h" href="#que">Qué hace</a><a class="h" href="#ejemplos">Ejemplos</a><a class="h" href="#instalar">Cómo se instala</a><a class="h" href="#preguntas">Preguntas</a>
+    <span id="quien" class="quien" hidden></span>
+    <button class="btn chico" id="bEntrarTop" type="button">Entrar</button>
+  </nav>
+</div></header>
+
+<main>
+<div class="hero"><div class="wrap">
+  <span class="pill">Solo para la comunidad · By Thalia Ruiz</span>
+  <h1>Tu <em>fábrica de vídeos</em> animados, con Claude</h1>
+  <p class="sub">Dale una idea o tu guion y tu voz, y la Fábrica dibuja las escenas y te entrega el vídeo listo, con título y descripción. Todo en tu ordenador.</p>
+  <div class="acciones">
+    <a class="btn" href="#descargar">Descargar la Fábrica</a>
+    <a class="btn sec" href="#ejemplos">Ver ejemplos</a>
+  </div>
+  <p class="nota">Para entrar necesitas la cuenta de Google con la que te uniste a la comunidad.</p>
+</div></div>
+
+<section id="que"><div class="wrap">
+  <h2>Todo en un solo panel</h2>
+  <p class="lead">Lo abres en el navegador y vas pulsando. Claude hace el trabajo pesado; tú decides.</p>
+  <div class="rejilla">
+    <div class="tarjeta"><div class="ic">🎬</div><h3>Vídeos Long</h3><p>Animaciones 2D de 1 a 40 minutos en varios estilos: Archivo, Roma, Stickman, Cartoon, Terror VHS y más.</p></div>
+    <div class="tarjeta"><div class="ic">📱</div><h3>Shorts</h3><p>Mapas animados, curiosidades, reels colorful y reels explicativos, en vertical.</p></div>
+    <div class="tarjeta"><div class="ic">✍️</div><h3>Tu guion y tu voz</h3><p>Trae tu guion y tu audio, o genera la voz con ElevenLabs, GenAI Pro o AI33. También ideas para tu canal.</p></div>
+    <div class="tarjeta"><div class="ic">🧍</div><h3>Tu personaje</h3><p>Sube una foto y te lo dibuja en el muñeco de la Fábrica. Te propone tres versiones.</p></div>
+    <div class="tarjeta"><div class="ic">✨</div><h3>Mejorar mi vídeo</h3><p>Cortes con zoom, subtítulos de colores, rótulos y música libre sobre un vídeo que ya tengas.</p></div>
+    <div class="tarjeta"><div class="ic">🔄</div><h3>Se actualiza sola</h3><p>Cada vez que abres el panel se pone al día. No tienes que hacer nada.</p></div>
+  </div>
+</div></section>
+
+<section id="ejemplos" style="background:rgba(255,255,255,.03)"><div class="wrap">
+  <h2>Mira lo que sale</h2>
+  <p class="lead">Estilos de los vídeos Long y ejemplos de Shorts.</p>
+  <div class="galeria">
+    <figure><img src="img/long-archivo.jpg" alt="Archivo" loading="lazy"><figcaption>Archivo</figcaption></figure>
+    <figure><img src="img/long-ysi-stickman.jpg" alt="¿Y si…? Stickman" loading="lazy"><figcaption>¿Y si…? Stickman</figcaption></figure>
+    <figure><img src="img/long-roma-marmol.jpg" alt="Antigua Roma" loading="lazy"><figcaption>Antigua Roma</figcaption></figure>
+    <figure><img src="img/long-cartoon-tinta.jpg" alt="Cartoon tinta" loading="lazy"><figcaption>Cartoon tinta</figcaption></figure>
+    <figure><img src="img/terror-vhs.jpg" alt="Terror VHS" loading="lazy"><figcaption>Terror VHS</figcaption></figure>
+    <figure><img src="img/tinta-plana.jpg" alt="Tinta plana" loading="lazy"><figcaption>Tinta plana</figcaption></figure>
+  </div>
+  <div style="height:28px"></div>
+  <div class="galeria v" style="max-width:520px;margin:0 auto">
+    <figure><img src="img/short-1.jpg" alt="Short 1" loading="lazy"></figure>
+    <figure><img src="img/short-2.jpg" alt="Short 2" loading="lazy"></figure>
+    <figure><img src="img/short-3.jpg" alt="Short 3" loading="lazy"></figure>
+  </div>
+  <div style="height:36px"></div>
+  <h2 style="font-size:24px">Mejorar un vídeo: antes y después</h2>
+  <div style="height:14px"></div>
+  <div class="par">
+    <figure><span class="a">ANTES</span><img src="img/original-1.jpg" alt="Antes" loading="lazy"></figure>
+    <figure><span>DESPUÉS</span><img src="img/editado-1.jpg" alt="Después" loading="lazy"></figure>
+  </div>
+  <div style="height:36px"></div>
+  <h2 style="font-size:24px">Tu personaje, dibujado en la Fábrica</h2>
+  <div style="height:14px"></div>
+  <div class="par">
+    <figure><span class="a">TU FOTO</span><img src="img/personaje-1-foto.jpg" alt="Foto" loading="lazy"></figure>
+    <figure><span>EN LA FÁBRICA</span><img src="img/personaje-1.jpg" alt="Personaje" loading="lazy"></figure>
+  </div>
+</div></section>
+
+<section id="descargar"><div class="wrap">
+  <h2>Descarga</h2>
+  <p class="lead">Entra con Google. Si estás en la lista de la comunidad y tu acceso está activo, aparece el botón de descarga.</p>
+  <div class="caja">
+    <div id="vSinSesion">
+      <h3>Entra para descargar</h3>
+      <p>Usa la misma cuenta de Google con la que te uniste.</p>
+      <button class="btn" id="bGoogle" type="button"><span class="g">G</span> Entrar con Google</button>
+    </div>
+    <div id="vCon" hidden>
+      <h3 id="hola">¡Hola!</h3>
+      <p id="vence">Tu acceso está activo.</p>
+      <a class="btn" id="bBajar" href="https://github.com/thaliaruizmc/fabrica-mindtube/releases/latest/download/FabricaMINDTUBE.zip">⬇ Descargar para Windows y Mac</a>
+      <p class="nota" id="pesa">Unos 650 MB · versión <span id="ver">…</span></p>
+      <p class="nota">¿Prefieres la instalación con un mensaje (sin descargar a mano)? Mira el paso a paso de abajo.</p>
+    </div>
+    <div class="msg" id="msg" hidden></div>
+  </div>
+</div></section>
+
+<section id="instalar" style="background:rgba(255,255,255,.03)"><div class="wrap">
+  <h2>Cómo se instala</h2>
+  <p class="lead">Una sola vez, unos 10 minutos. No hay instaladores raros ni que tocar el antivirus.</p>
+  <ol class="pasos">
+    <li><b>Crea una carpeta vacía llamada «FabricaMINDTUBE»</b><span>Por ejemplo, dentro de Documentos.</span></li>
+    <li><b>Abre la app de Claude y entra en Code</b><span>El icono &lt;/&gt; de arriba a la izquierda.</span><img src="img/claude-pestana-code.png" alt="Pestaña Code" loading="lazy"></li>
+    <li><b>Elige esa carpeta</b><span>Abajo, junto a «Esta computadora».</span><img src="img/claude-elegir-carpeta.png" alt="Elegir carpeta" loading="lazy"></li>
+    <li><b>Di que sí al aviso de confianza</b><span>Claude va a guardar ahí tus vídeos.</span><img src="img/claude-confianza.png" alt="Confianza" loading="lazy"></li>
+    <li><b>Pega este mensaje y pulsa Intro</b><span>Claude se encarga del resto. Si pide permiso, pulsa «Permitir».</span>
+      <pre id="orden">Instala aquí la Fábrica MINDTUBE de Thalia: ejecuta  curl -fsSL https://raw.githubusercontent.com/thaliaruizmc/fabrica-mindtube/main/instalar-en-linea/descargar.sh | bash  y después sigue las instrucciones de su CLAUDE.md para instalarla y empezar.</pre>
+      <button class="btn chico" id="bCopiar" type="button" style="margin-top:10px">Copiar mensaje</button>
+      <img src="img/claude-escribir-comando.png" alt="Escribir el mensaje" loading="lazy">
+    </li>
+    <li><b>Cuando termine, escribe <code>/fabricamindtube</code></b><span>Se abre el panel en el navegador. Entra con tu Google y a crear.</span></li>
+  </ol>
+</div></section>
+
+<section id="preguntas"><div class="wrap">
+  <h2>Preguntas</h2><div style="height:20px"></div>
+  <details><summary>¿Qué necesito?</summary><p>La app de Claude con Claude Code, la cuenta de Google con la que te uniste a la comunidad, y las claves de las voces que quieras usar (ElevenLabs, GenAI Pro o AI33). Las pones tú en un archivo; nunca por el chat.</p></details>
+  <details><summary>¿Cuánto tarda en hacerse un vídeo?</summary><p>Depende de tu ordenador y de la duración. Un short suele tardar unos minutos; un vídeo largo, más. El panel te va diciendo en qué punto está.</p></details>
+  <details><summary>¿Se actualiza sola?</summary><p>Sí. Cada vez que abres el panel comprueba si hay una versión nueva y la instala sin tocar tus vídeos ni tus claves.</p></details>
+  <details><summary>¿Cada cuánto tengo que entrar con Google?</summary><p>La Fábrica comprueba tu acceso cada cierto tiempo. Si pasa una semana sin comprobarse, te pide entrar otra vez con Google; es un clic.</p></details>
+  <details><summary>Me dice que mi cuenta no está en la lista</summary><p>Entra con la misma cuenta de Google con la que te uniste a la comunidad. Si sigue igual, escríbele a Thalia.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">Fábrica MINDTUBE · By Thalia Ruiz · Hecha con cariño para la comunidad</div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const SB_URL = "https://sdalgfpdvmodeiuzivsg.supabase.co";
+const SB_KEY = "sb_publishable_Z0uUAwHQ7PWqDkg_xfV8fw_KexKZDhJ";
+const $ = (id)=>document.getElementById(id);
+let nube = null;
+try { nube = supabase.createClient(SB_URL, SB_KEY, { auth:{ flowType:"pkce", persistSession:true, autoRefreshToken:true, detectSessionInUrl:true, storageKey:"fabrica.web" } }); } catch(e){}
+const msg = (t, ok)=>{ const m=$("msg"); m.textContent=t||""; m.hidden=!t; m.className="msg"+(ok?" ok":""); };
+
+function veredicto(d, correo){
+  if(!d || !d.existe) return "La cuenta "+correo+" no está en la lista de la comunidad. Entra con la misma cuenta de Google con la que te uniste.";
+  if(!d.activo) return "Tu acceso está desactivado. Escríbele a Thalia.";
+  if(d.vence){ const f = new Date(d.vence+"T23:59:59"); if(f < new Date()) return "Tu acceso venció el "+f.toLocaleDateString("es-ES")+". Escríbele a Thalia."; }
+  return null;
+}
+async function entrar(){
+  const b=$("bGoogle"); b.disabled=true; b.lastChild.textContent=" Abriendo Google…"; msg("");
+  if(!nube){ msg("No pude cargar el inicio de sesión. Mira tu internet y recarga."); b.disabled=false; return; }
+  const { error } = await nube.auth.signInWithOAuth({ provider:"google", options:{ redirectTo: location.origin + location.pathname, queryParams:{ prompt:"select_account" } } });
+  if(error){ msg("No pude abrir Google. Vuelve a probar."); b.disabled=false; b.lastChild.textContent=" Entrar con Google"; }
+}
+async function salir(){ try{ await nube.auth.signOut(); }catch(e){} location.href = location.pathname + "#descargar"; location.reload(); }
+
+async function confirma(){
+  if(!nube) return;
+  const { data } = await nube.auth.getSession();
+  if(location.search.includes("code=") || location.hash.includes("access_token")) history.replaceState(null,"",location.pathname+"#descargar");
+  const s = data && data.session;
+  if(!s){ $("vSinSesion").hidden=false; $("vCon").hidden=true; return; }
+  $("vSinSesion").hidden=true;
+  const correo = (s.user && s.user.email) || "";
+  let d = null;
+  try{
+    const r = await fetch(SB_URL+"/rest/v1/rpc/mi_acceso_databoot", { method:"POST", headers:{ apikey:SB_KEY, Authorization:"Bearer "+s.access_token, "Content-Type":"application/json" }, body:"{}" });
+    if(!r.ok) throw new Error(r.status);
+    d = await r.json();
+  }catch(e){ msg("No pude comprobar tu acceso ahora mismo. Recarga la página en un momento."); $("vSinSesion").hidden=false; return; }
+  const problema = veredicto(d, correo);
+  const q = $("quien"); q.hidden=false; q.innerHTML = (correo.replace(/[<>&]/g,"")) + '<button class="btn sec chico" id="bSalir" type="button">Salir</button>';
+  $("bSalir").onclick = salir; $("bEntrarTop").hidden = true;
+  if(problema){ $("vSinSesion").hidden=false; $("vCon").hidden=true; msg(problema); return; }
+  $("vCon").hidden=false;
+  $("hola").textContent = "¡Hola" + (d.nombre ? ", "+String(d.nombre).split(" ")[0].replace(/[<>&]/g,"") : "") + "!";
+  if(d.vence){ const f=new Date(d.vence+"T12:00:00"); $("vence").textContent = "Tu acceso está activo hasta el "+f.toLocaleDateString("es-ES")+"."; }
+  try{ const v = await (await fetch("https://api.github.com/repos/thaliaruizmc/fabrica-mindtube/releases/latest")).json(); if(v.tag_name) $("ver").textContent = v.tag_name.replace(/^v/,""); }catch(e){ $("ver").textContent="última"; }
+}
+$("bGoogle").onclick = entrar;
+$("bEntrarTop").onclick = ()=>{ location.hash="#descargar"; entrar(); };
+$("bCopiar").onclick = async ()=>{ try{ await navigator.clipboard.writeText($("orden").textContent); $("bCopiar").textContent="¡Copiado!"; }catch(e){ $("bCopiar").textContent="Selecciona el texto y cópialo"; } setTimeout(()=>$("bCopiar").textContent="Copiar mensaje",2500); };
+confirma();
+</script>
+</body>
+</html>
