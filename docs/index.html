@@ -35,8 +35,8 @@ h2{font-size:clamp(26px,4vw,36px);margin:0 0 8px;text-align:center}
 .tarjeta .ic{font-size:26px;margin-bottom:10px}
 .galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .galeria figure{margin:0;background:var(--azul2);border:1px solid var(--linea);border-radius:14px;overflow:hidden}
-.galeria img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
-.galeria.v img{aspect-ratio:9/16}
+.galeria video,.galeria img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#071029}
+.galeria.v video,.galeria.v img{aspect-ratio:9/16}
 .galeria figcaption{padding:8px 10px;font-size:13px;color:var(--tenue)}
 .par{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto}
 .par figure{margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--linea)}
@@ -101,18 +101,19 @@ footer{border-top:1px solid var(--linea);padding:30px 0;text-align:center;color:
   <h2>Mira lo que sale</h2>
   <p class="lead">Estilos de los vídeos Long y ejemplos de Shorts.</p>
   <div class="galeria">
-    <figure><img src="img/long-archivo.jpg" alt="Archivo" loading="lazy"><figcaption>Archivo</figcaption></figure>
-    <figure><img src="img/long-ysi-stickman.jpg" alt="¿Y si…? Stickman" loading="lazy"><figcaption>¿Y si…? Stickman</figcaption></figure>
-    <figure><img src="img/long-roma-marmol.jpg" alt="Antigua Roma" loading="lazy"><figcaption>Antigua Roma</figcaption></figure>
-    <figure><img src="img/long-cartoon-tinta.jpg" alt="Cartoon tinta" loading="lazy"><figcaption>Cartoon tinta</figcaption></figure>
-    <figure><img src="img/terror-vhs.jpg" alt="Terror VHS" loading="lazy"><figcaption>Terror VHS</figcaption></figure>
-    <figure><img src="img/tinta-plana.jpg" alt="Tinta plana" loading="lazy"><figcaption>Tinta plana</figcaption></figure>
+    <figure><video src="vid/archivo.mp4" poster="img/long-archivo.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Archivo"></video><figcaption>Archivo</figcaption></figure>
+    <figure><video src="vid/ysi-stickman.mp4" poster="img/long-ysi-stickman.jpg" muted loop autoplay playsinline preload="metadata" aria-label="¿Y si…? Stickman"></video><figcaption>¿Y si…? Stickman</figcaption></figure>
+    <figure><video src="vid/roma-marmol.mp4" poster="img/long-roma-marmol.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Antigua Roma"></video><figcaption>Antigua Roma</figcaption></figure>
+    <figure><video src="vid/cartoon-tinta.mp4" poster="img/long-cartoon-tinta.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Cartoon tinta"></video><figcaption>Cartoon tinta</figcaption></figure>
+    <figure><video src="vid/terror-vhs.mp4" poster="img/terror-vhs.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Terror VHS"></video><figcaption>Terror VHS</figcaption></figure>
+    <figure><video src="vid/tinta-plana.mp4" poster="img/tinta-plana.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Tinta plana"></video><figcaption>Tinta plana</figcaption></figure>
   </div>
   <div style="height:28px"></div>
-  <div class="galeria v" style="max-width:520px;margin:0 auto">
-    <figure><img src="img/short-1.jpg" alt="Short 1" loading="lazy"></figure>
-    <figure><img src="img/short-2.jpg" alt="Short 2" loading="lazy"></figure>
-    <figure><img src="img/short-3.jpg" alt="Short 3" loading="lazy"></figure>
+  <div class="galeria v" style="max-width:700px;margin:0 auto">
+    <figure><video src="vid/short-1.mp4" poster="img/short-1.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Short 1"></video></figure>
+    <figure><video src="vid/short-2.mp4" poster="img/short-2.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Short 2"></video></figure>
+    <figure><video src="vid/short-3.mp4" poster="img/short-3.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Short 3"></video></figure>
+    <figure><video src="vid/short-4.mp4" muted loop autoplay playsinline preload="metadata" aria-label="Short 4"></video></figure>
   </div>
   <div style="height:36px"></div>
   <h2 style="font-size:24px">Mejorar un vídeo: antes y después</h2>
