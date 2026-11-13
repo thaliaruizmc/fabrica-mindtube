@@ -216,7 +216,7 @@ async function confirma(){
   const problema = veredicto(d, correo);
   const q = $("quien"); q.hidden=false; q.innerHTML = (correo.replace(/[<>&]/g,"")) + '<button class="btn sec chico" id="bSalir" type="button">Salir</button>';
   $("bSalir").onclick = salir; $("bEntrarTop").hidden = true;
-  if(problema){ $("vSinSesion").hidden=false; $("vCon").hidden=true; msg(problema); return; }
+  if(problema){ $("vSinSesion").hidden=false; $("vCon").hidden=true; msg("No puedes descargar con esta cuenta. "+problema); $("descargar").scrollIntoView(); return; }
   $("vCon").hidden=false;
   document.body.classList.add("dentro");
   const ua=(navigator.userAgentData&&navigator.userAgentData.platform)||navigator.platform||navigator.userAgent||"";
