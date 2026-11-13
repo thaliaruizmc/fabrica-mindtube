@@ -66,7 +66,7 @@ footer{border-top:1px solid var(--linea);padding:30px 0;text-align:center;color:
 <header><div class="wrap">
   <div class="logo">Fábrica <b>MINDTUBE</b></div>
   <nav>
-    <a class="h" href="#que">Qué hace</a><a class="h" href="#ejemplos">Ejemplos</a><a class="h" href="#instalar">Cómo se instala</a><a class="h" href="#preguntas">Preguntas</a>
+    <a class="h" href="#que">Qué hace</a><a class="h" href="#ejemplos">Ejemplos</a><a class="h" href="#preguntas">Preguntas</a>
     <span id="quien" class="quien" hidden></span>
     <button class="btn chico" id="bEntrarTop" type="button">Entrar</button>
   </nav>
@@ -144,27 +144,10 @@ footer{border-top:1px solid var(--linea);padding:30px 0;text-align:center;color:
       <p id="vence">Tu acceso está activo.</p>
       <a class="btn" id="bBajar" href="https://github.com/thaliaruizmc/fabrica-mindtube/releases/latest/download/FabricaMINDTUBE.zip">⬇ Descargar para Windows y Mac</a>
       <p class="nota" id="pesa">Unos 650 MB · versión <span id="ver">…</span></p>
-      <p class="nota">¿Prefieres la instalación con un mensaje (sin descargar a mano)? Mira el paso a paso de abajo.</p>
+      <p class="nota">La instalación paso a paso está en el vídeo de la comunidad en Skool.</p>
     </div>
     <div class="msg" id="msg" hidden></div>
   </div>
-</div></section>
-
-<section id="instalar" style="background:rgba(255,255,255,.03)"><div class="wrap">
-  <h2>Cómo se instala</h2>
-  <p class="lead">Una sola vez, unos 10 minutos. No hay instaladores raros ni que tocar el antivirus.</p>
-  <ol class="pasos">
-    <li><b>Crea una carpeta vacía llamada «FabricaMINDTUBE»</b><span>Por ejemplo, dentro de Documentos.</span></li>
-    <li><b>Abre la app de Claude y entra en Code</b><span>El icono &lt;/&gt; de arriba a la izquierda.</span><img src="img/claude-pestana-code.png" alt="Pestaña Code" loading="lazy"></li>
-    <li><b>Elige esa carpeta</b><span>Abajo, junto a «Esta computadora».</span><img src="img/claude-elegir-carpeta.png" alt="Elegir carpeta" loading="lazy"></li>
-    <li><b>Di que sí al aviso de confianza</b><span>Claude va a guardar ahí tus vídeos.</span><img src="img/claude-confianza.png" alt="Confianza" loading="lazy"></li>
-    <li><b>Pega este mensaje y pulsa Intro</b><span>Claude se encarga del resto. Si pide permiso, pulsa «Permitir».</span>
-      <pre id="orden">Instala aquí la Fábrica MINDTUBE de Thalia: ejecuta  curl -fsSL https://raw.githubusercontent.com/thaliaruizmc/fabrica-mindtube/main/instalar-en-linea/descargar.sh | bash  y después sigue las instrucciones de su CLAUDE.md para instalarla y empezar.</pre>
-      <button class="btn chico" id="bCopiar" type="button" style="margin-top:10px">Copiar mensaje</button>
-      <img src="img/claude-escribir-comando.png" alt="Escribir el mensaje" loading="lazy">
-    </li>
-    <li><b>Cuando termine, escribe <code>/fabricamindtube</code></b><span>Se abre el panel en el navegador. Entra con tu Google y a crear.</span></li>
-  </ol>
 </div></section>
 
 <section id="preguntas"><div class="wrap">
@@ -227,7 +210,6 @@ async function confirma(){
 }
 $("bGoogle").onclick = entrar;
 $("bEntrarTop").onclick = ()=>{ location.hash="#descargar"; entrar(); };
-$("bCopiar").onclick = async ()=>{ try{ await navigator.clipboard.writeText($("orden").textContent); $("bCopiar").textContent="¡Copiado!"; }catch(e){ $("bCopiar").textContent="Selecciona el texto y cópialo"; } setTimeout(()=>$("bCopiar").textContent="Copiar mensaje",2500); };
 confirma();
 </script>
 </body>
