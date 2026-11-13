@@ -40,7 +40,7 @@ h2{font-size:clamp(26px,4vw,36px);margin:0 0 8px;text-align:center}
 .galeria figcaption{padding:8px 10px;font-size:13px;color:var(--tenue)}
 .par{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto}
 .par figure{margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--linea)}
-.par img{display:block;width:100%}
+.par img,.par video{display:block;width:100%}
 .par span{position:absolute;left:10px;top:10px;background:var(--oro);color:#1b1500;font-weight:800;font-size:12px;padding:4px 10px;border-radius:99px}
 .par span.a{background:#fff}
 .pasos{counter-reset:p;list-style:none;padding:0;margin:0 auto;max-width:760px;display:grid;gap:12px}
@@ -119,15 +119,15 @@ footer{border-top:1px solid var(--linea);padding:30px 0;text-align:center;color:
   <h2 style="font-size:24px">Mejorar un vídeo: antes y después</h2>
   <div style="height:14px"></div>
   <div class="par">
-    <figure><span class="a">ANTES</span><img src="img/original-1.jpg" alt="Antes" loading="lazy"></figure>
-    <figure><span>DESPUÉS</span><img src="img/editado-1.jpg" alt="Después" loading="lazy"></figure>
+    <figure><span class="a">ANTES</span><video src="vid/original-1.mp4" poster="img/original-1.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Antes"></video></figure>
+    <figure><span>DESPUÉS</span><video src="vid/editado-1.mp4" poster="img/editado-1.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Después"></video></figure>
   </div>
   <div style="height:36px"></div>
   <h2 style="font-size:24px">Tu personaje, dibujado en la Fábrica</h2>
   <div style="height:14px"></div>
   <div class="par">
     <figure><span class="a">TU FOTO</span><img src="img/personaje-1-foto.jpg" alt="Foto" loading="lazy"></figure>
-    <figure><span>EN LA FÁBRICA</span><img src="img/personaje-1.jpg" alt="Personaje" loading="lazy"></figure>
+    <figure><span>EN LA FÁBRICA</span><video src="vid/personaje-1.mp4" poster="img/personaje-1.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Personaje"></video></figure>
   </div>
 </div></section>
 
