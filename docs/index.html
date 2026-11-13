@@ -214,7 +214,7 @@ async function confirma(){
     d = await r.json();
   }catch(e){ msg("No pude comprobar tu acceso ahora mismo. Recarga la página en un momento."); $("vSinSesion").hidden=false; return; }
   const problema = veredicto(d, correo);
-  const q = $("quien"); q.hidden=false; q.innerHTML = (correo.replace(/[<>&]/g,"")) + '<button class="btn sec chico" id="bSalir" type="button">Salir</button>';
+  const q = $("quien"); q.hidden=false; q.innerHTML = (problema ? '<span style="color:#ff9b9b">Sin acceso · </span>' : '') + (correo.replace(/[<>&]/g,"")) + '<button class="btn sec chico" id="bSalir" type="button">Salir</button>';
   $("bSalir").onclick = salir; $("bEntrarTop").hidden = true;
   if(problema){ $("vSinSesion").hidden=false; $("vCon").hidden=true; msg("No puedes descargar con esta cuenta. "+problema); $("descargar").scrollIntoView(); return; }
   $("vCon").hidden=false;
